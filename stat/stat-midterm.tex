@@ -1,6 +1,8 @@
-\documentclass{article}
+\documentclass[twocolumn]{article}
 \usepackage{amsmath}
 \usepackage[pdfusetitle]{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{microtype}
 
 \title{STAT PHYS SCIENCE Midterm Cheat Sheet}
 \author{Noppakorn Jiravaranun}
@@ -33,7 +35,9 @@
     \begin{equation}
         P_{i} = x_{(i(\frac{N-1}{100}))}
     \end{equation}
+
     \newpage
+
     \section{Measurement of Variation or Dispersion}
     \subsection{Range}
     \begin{equation}
@@ -44,11 +48,11 @@
         A.D. = \frac{\sum_{i=1}^{n} |x_{i}-\mu|}{n}
     \end{equation}
     \subsection{Standard Deviation (S.D.)}
-    \subsubsection{Population}
+    \subsubsection{Standard Deviation (Population)}
     \begin{equation}
         \sigma = \sqrt{\frac{\sum_{i=1}^{N} (x_{i}-\mu)^2}{N}} = \sqrt{\frac{\sum_{i=1}^{N} x_{i} -N\mu^2}{N}}
     \end{equation}
-    \subsubsection{Sample}
+    \subsubsection{Standard Deviation (Sample)}
     \begin{equation}
         s = \sqrt{\frac{\sum_{i=1}^{n} (x_{i}-\mu)^2}{n-1}} = \sqrt{\frac{\sum_{i=1}^{n} x_{i} -N\mu^2}{n-1}}
     \end{equation}
@@ -56,6 +60,9 @@
     \begin{equation}
         Q.D. = \frac{Q_{3} - Q_{1}}{2}
     \end{equation}
+
+    \newpage
+
     \subsection{Skewness}
     \subsubsection{Skewness (Population)}
     \begin{equation}
@@ -66,10 +73,27 @@
     else if $S_{k} < 0$ the data is skwed left
     \subsubsection{Skewness (Sample)}
     \begin{equation}
-        s_{k} = \sum_{i=1}^{N}\frac{[x_{i} - \bar{x}]^{3}}{s^{3}N}
+        s_{k} = \sum_{i=1}^{n}\frac{[x_{i} - \bar{x}]^{3}}{s^{3}n}
     \end{equation}
     if $-1 \leq s_{k} \leq 1$ the data is normal\\
     else if $s_{k} > 1$ the data is skwed right\\
     else if $s_{k} < -1$ the data is skwed left
+    \subsection{Kurtosis}
+    A measure of the peakedness of a distribution
+    \subsubsection{Kurtosis (Population)}
+    \begin{equation}
+        K = \sum_{i=1}^{N}\frac{[x_{i} - \mu]^{4}}{\sigma^{4}N}
+    \end{equation}
+    if $K = 0$ the data is normal\\
+    else if $K > 0$ the data is higher than normal\\
+    else if $K < 0$ the data is lower than normal
+    \subsubsection{Kurtosis (Sample)}
+    \begin{equation}
+        k = ...
+    \end{equation}
+    if $-1 \leq k \leq 1$ the data is normal\\
+    else if $k > 1$ the data is higher than normal\\
+    else if $k < -1$ the data is lower than normal
+
 \end{document}
 

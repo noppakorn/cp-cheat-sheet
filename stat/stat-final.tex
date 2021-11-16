@@ -1,0 +1,71 @@
+\documentclass[twocolumn]{article}
+\usepackage{amsmath}
+\usepackage[pdfusetitle]{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{microtype}
+\usepackage{mathtools}
+
+\title{STAT PHYS SCIENCE Final Cheat Sheet}
+\author{Noppakorn Jiravaranun}
+\date{\today}
+
+\newcommand\Perm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\Comb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+
+\begin{document}
+\maketitle
+
+\section{Measurement of Variation or Dispersion}
+\subsection{Range}
+\begin{equation}
+    R = x_{max} - x_{min}
+\end{equation}
+\subsection{Average Deviation (A.D.)}
+\begin{equation}
+    A.D. = \frac{\sum_{i=1}^{n} |x_{i}-\mu|}{n}
+\end{equation}
+\subsection{Standard Deviation (S.D.)}
+\subsubsection{Standard Deviation (Population)}
+\begin{equation}
+    \sigma = \sqrt{\frac{\sum_{i=1}^{N} (x_{i}-\mu)^2}{N}} = \sqrt{\frac{\sum_{i=1}^{N} x_{i} -N\mu^2}{N}}
+\end{equation}
+\subsubsection{Standard Deviation (Sample)}
+\begin{equation}
+    s = \sqrt{\frac{\sum_{i=1}^{n} (x_{i}-\mu)^2}{n-1}} = \sqrt{\frac{\sum_{i=1}^{n} x_{i} -N\mu^2}{n-1}}
+\end{equation}
+
+\subsection{Skewness}
+\subsubsection{Skewness (Population)}
+\begin{equation}
+    S_{k} = \sum_{i=1}^{N}\frac{[x_{i} - \mu]^{3}}{\sigma^{3}N}
+\end{equation}
+if $S_{k} = 0$ the data is normal\\
+else if $S_{k} > 0$ the data is skwed right\\
+else if $S_{k} < 0$ the data is skwed left
+\subsubsection{Skewness (Sample)}
+\begin{equation}
+    s_{k} = \frac{n^{2}}{(n-1)(n-2)}\sum_{i=1}^{n}\frac{[x_{i} - \bar{x}]^{3}}{s^{3}n}
+\end{equation}
+if $-1 \leq s_{k} \leq 1$ the data is normal\\
+else if $s_{k} > 1$ the data is skwed right\\
+else if $s_{k} < -1$ the data is skwed left
+\subsection{Relative Kurtosis}
+A measure of the peakedness of a distribution
+\subsubsection{Relative Kurtosis (Population)}
+\begin{equation}
+    K = \sum_{i=1}^{N}\frac{[x_{i} - \mu]^{4}}{\sigma^{4}N} - 3
+\end{equation}
+if $K = 0$ the data is normal\\
+else if $K > 0$ the data is higher than normal\\
+else if $K < 0$ the data is lower than normal
+\subsubsection{Relative Kurtosis (Sample)}
+\tiny
+\begin{equation}
+    k = \frac{n^{2}(n+1)}{(n-1)(n-2)(n-3)} \sum_{i=1}^{n}\frac{[x_{i}-x]^{4}}{s^{4}n}-\frac{3(n-1)^{2}}{(n-2)(n-3)}
+\end{equation}
+\normalsize
+if $-1 \leq k \leq 1$ the data is normal\\
+else if $k > 1$ the data is higher than normal\\
+else if $k < -1$ the data is lower than normal
+
+\end{document}

@@ -1,9 +1,11 @@
 \documentclass[twocolumn]{article}
 \usepackage{amsmath}
 \usepackage[pdfusetitle]{hyperref}
-\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage[a4paper]{geometry}
 \usepackage{microtype}
 \usepackage{mathtools}
+
+\geometry{margin=1in}
 
 \title{STAT PHYS SCIENCE Final Cheat Sheet}
 \author{Noppakorn Jiravaranun}
@@ -15,57 +17,92 @@
 \begin{document}
 \maketitle
 
-\section{Measurement of Variation or Dispersion}
-\subsection{Range}
-\begin{equation}
-    R = x_{max} - x_{min}
-\end{equation}
-\subsection{Average Deviation (A.D.)}
-\begin{equation}
-    A.D. = \frac{\sum_{i=1}^{n} |x_{i}-\mu|}{n}
-\end{equation}
-\subsection{Standard Deviation (S.D.)}
-\subsubsection{Standard Deviation (Population)}
-\begin{equation}
-    \sigma = \sqrt{\frac{\sum_{i=1}^{N} (x_{i}-\mu)^2}{N}} = \sqrt{\frac{\sum_{i=1}^{N} x_{i} -N\mu^2}{N}}
-\end{equation}
-\subsubsection{Standard Deviation (Sample)}
-\begin{equation}
-    s = \sqrt{\frac{\sum_{i=1}^{n} (x_{i}-\mu)^2}{n-1}} = \sqrt{\frac{\sum_{i=1}^{n} x_{i} -N\mu^2}{n-1}}
-\end{equation}
+\section{Continuous Random Distribution}
+\subsection{Uniform Distribution}
+\begin{align*}
+    f(x) = \frac{1}{b-a}, a \leq x \leq b
+\end{align*}
+\begin{align*}
+    \mu = E(x) = \frac{(a+b)}{2}
+\end{align*}
+\begin{align*}
+    \sigma^{2} = V(X) = \frac{(b-a)^{2}}{12}
+\end{align*}
+\subsection{Normal Distribution}
+\begin{align*}
+    E(X) = \mu
+\end{align*}
+\begin{align*}
+    V(X) = \sigma^{2}
+\end{align*}
+\subsubsection{Standardizing a Normal Random Variable}
+\begin{align*}
+    Z = \frac{X-\mu}{\sigma}
+\end{align*}
+\begin{align*}
+    P(X \leq x) = P(\frac{X-\mu}{\sigma} \leq \frac{x-\mu}{\sigma}) = P(Z < z)
+\end{align*}
+\subsection{Exponential Distribution}
+\begin{align*}
+    f(x) = \lambda e^{-\lambda x} \text{, for } 0 \leq x < \infty
+\end{align*}
+\begin{align*}
+    \mu = E(X) = \frac{1}{\lambda} \text {  and  }
+    \sigma^{2} = V(x) = \frac{1}{\lambda^{2}}
+\end{align*}
+\subsection{Gamma Distribution}
+\begin{align*}
+    \mu = E(X) = \frac{r}{\lambda} \text{  and  } \sigma^{2} = V(X) = \frac{r}{\lambda^{2}}
+\end{align*}
 
-\subsection{Skewness}
-\subsubsection{Skewness (Population)}
-\begin{equation}
-    S_{k} = \sum_{i=1}^{N}\frac{[x_{i} - \mu]^{3}}{\sigma^{3}N}
-\end{equation}
-if $S_{k} = 0$ the data is normal\\
-else if $S_{k} > 0$ the data is skwed right\\
-else if $S_{k} < 0$ the data is skwed left
-\subsubsection{Skewness (Sample)}
-\begin{equation}
-    s_{k} = \frac{n^{2}}{(n-1)(n-2)}\sum_{i=1}^{n}\frac{[x_{i} - \bar{x}]^{3}}{s^{3}n}
-\end{equation}
-if $-1 \leq s_{k} \leq 1$ the data is normal\\
-else if $s_{k} > 1$ the data is skwed right\\
-else if $s_{k} < -1$ the data is skwed left
-\subsection{Relative Kurtosis}
-A measure of the peakedness of a distribution
-\subsubsection{Relative Kurtosis (Population)}
-\begin{equation}
-    K = \sum_{i=1}^{N}\frac{[x_{i} - \mu]^{4}}{\sigma^{4}N} - 3
-\end{equation}
-if $K = 0$ the data is normal\\
-else if $K > 0$ the data is higher than normal\\
-else if $K < 0$ the data is lower than normal
-\subsubsection{Relative Kurtosis (Sample)}
-\tiny
-\begin{equation}
-    k = \frac{n^{2}(n+1)}{(n-1)(n-2)(n-3)} \sum_{i=1}^{n}\frac{[x_{i}-x]^{4}}{s^{4}n}-\frac{3(n-1)^{2}}{(n-2)(n-3)}
-\end{equation}
-\normalsize
-if $-1 \leq k \leq 1$ the data is normal\\
-else if $k > 1$ the data is higher than normal\\
-else if $k < -1$ the data is lower than normal
+\vfill\break
 
+\section{Sampling Distribution}
+\subsection{Probability Distribution of Mean $(\bar{X})$}
+\subsubsection{Known Variance}
+\begin{align*}
+    Z = \frac{\bar{X}-\mu_{\bar{X}}} {\frac{\sigma}{\sqrt{n}}}
+\end{align*}
+\subsubsection{$n \geq 30$}
+\begin{align*}
+    Z = \frac{\bar{X}-\mu_{\bar{X}}}{\frac{s}{\sqrt{n}}}
+\end{align*}
+\subsubsection{Unknown Variance}
+\begin{align*}
+    T = \frac{X - \mu}{\frac{S}{\sqrt{n}}}
+\end{align*}
+has a $t$ distribution with $n-1$ degree of freedom.
+\subsection{Probability Distribution of Difference of Mean $(\bar{X_{1}}-\bar{X_{2}})$}
+\subsubsection{Central Limit Theorem $(n \geq 30)$}
+\begin{align*}
+    Z = \frac{\bar{X_{1}} - \bar{X_{2}} - (\mu_{1} - \mu_{2})}{\sqrt{\frac{\sigma_{1}^{2}}{n_{1}} + \frac{\sigma_{2}^{2}}{n_{2}}}}
+\end{align*}
+\subsubsection{$\sigma_{1}^{2} = \sigma_{2}^{2}$}
+Random varaible T with degree of freedom $n_{1}+n_{2}-2$
+\begin{align*}
+    T = \frac{\bar{X_{1}} - \bar{X_{2} - (\mu_{1} - \mu_{2})}}{\sqrt{S_{p}^{2}(\frac{1}{n_{1}} + \frac{1}{n_{2}})}}
+\end{align*}
+\begin{align*}
+    S^{2}_{p} = \frac{(n-1)s_{1}^{2}+(n-1)s_{2}^{2}}{n_{1} + n_{2} - 2}
+\end{align*}
+\subsubsection{$\sigma_{1}^{2} \neq \sigma_{2}^{2}$}
+$t$ distribution with degree of freedom
+\begin{align*}
+    \nu = \frac{(\frac{s_{1}^{2}}{n_{1}} + \frac{s_{2}^{2}}{n_{2}})^{2}}{\frac{(s_{1}^{2}/n_{1})^{2}}{n_{1} - 1}\frac{}{} + \frac{(s_{2}^{2}/n_{2})^{2}}{n_{2} - 1}}
+\end{align*}
+\begin{align*}
+    T = \frac{\bar{X_{1}} - \bar{X_{2}} - (\mu_{1} - \mu_{2})}{\sqrt{\frac{\sigma_{1}^{2}}{n_{1}} + \frac{\sigma_{2}^{2}}{n_{2}}}}
+\end{align*}
+\subsubsection{Dependent data between two groups}
+\begin{align*}
+    T(n-1) = \frac{\bar{D} - \mu_{D}}{\frac{\sigma_{D}}{\sqrt{n}}} \text{ with } \sigma_{D} \approx S_{D} = \sqrt{\frac{\sum_{j=1}^{n}D_{j}^{2} - nD^{2}}{n-1}}
+\end{align*}
+\subsection{Probability Distribution of Variance $(S^{2})$}
+\begin{align*}
+    \chi^{2}(n-1) = \frac{(n-1)S^{2}}{\sigma^{2}}
+\end{align*}
+\subsection{Probability Distribution of Variance Ratio $(\frac{S_{1}^{2}}{S_{2}^{2}})$}
+\begin{align*}
+    F(n_{1}-1, n_{2}-1) = \frac{S_{1}^2 / \sigma_{1}^{2}}{S_{2}^2 / \sigma_{2}^{2}}
+\end{align*}
 \end{document}

@@ -117,9 +117,27 @@ $t$ distribution with degree of freedom
 \begin{align*}
     Z = \frac{\hat{P_{1}} - \hat{P_{2}} - (P_{1} - P_{2})}{\sqrt{\frac{P_{1}(1-P_{1})}{n_{1}} + \frac{P_{2}(1-P_{2})}{n_{2}}}}
 \end{align*}
+
+\vfill\break
+
 \section{ANOVA}
 \begin{align*}
     SST = \sum_{i=1}^{k}\sum_{j=1}^{n_{i}}y_{ij}^{2} - \frac{TT^2}{N}
+\end{align*}
+\begin{align*}
+    SSB = \sum_{i=1}^{k}\frac{T_{i}^{2}}{n_{i}} - \frac{TT^2}{N}
+\end{align*}
+\begin{align*}
+    SSW = SST - SSB
+\end{align*}
+\begin{align*}
+    MSB = \frac{SSB}{k-1}
+\end{align*}
+\begin{align*}
+    MSW = \frac{SSW}{N-k}
+\end{align*}
+\begin{align*}
+    F = \frac{MSB}{MSE}
 \end{align*}
 \section{Regression}
 \subsection{Correlation Coefficient}

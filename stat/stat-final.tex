@@ -117,4 +117,39 @@ $t$ distribution with degree of freedom
 \begin{align*}
     Z = \frac{\hat{P_{1}} - \hat{P_{2}} - (P_{1} - P_{2})}{\sqrt{\frac{P_{1}(1-P_{1})}{n_{1}} + \frac{P_{2}(1-P_{2})}{n_{2}}}}
 \end{align*}
+\section{ANOVA}
+\begin{align*}
+    SST = \sum_{i=1}^{k}\sum_{j=1}^{n_{i}}y_{ij}^{2} - \frac{TT^2}{N}
+\end{align*}
+\section{Regression}
+\subsection{Correlation Coefficient}
+\begin{align*}
+    S_{xy} = \sum_{i=1}^{n}(x_{i}y_{i}) - \frac{\sum_{i=1}^{n}x_{i}\sum_{i=1}^{n}y_{i}}{n}
+\end{align*}
+\begin{align*}
+    S_{xx} = \sum_{i=1}^{n}x_{i}^{2} - \frac{(\sum_{i=1}^{n}x_{i})^{2}}{n}
+\end{align*}
+\begin{align*}
+    S_{xx} = \sum_{i=1}^{n}y_{i}^{2} - \frac{(\sum_{i=1}^{n}y_{i})^{2}}{n}
+\end{align*}
+\begin{align*}
+    r = \frac{S_{xy}}{\sqrt{S_{xx}S_{yy}}}
+\end{align*}
+\subsection{Regression Analysis}
+\begin{align*}
+    \hat{y} = b_{0} + b_{1}x
+\end{align*}
+\begin{align*}
+    b_{1} = \frac{S_{xy}}{S_{xx}}
+\end{align*}
+\begin{align*}
+    b_{0} = \bar{y} - b_{1}\bar{x}
+\end{align*}
+\begin{align*}
+    SEE = \sqrt{\frac{S_{yy} - b_{1} S_{xy}}{n-2}}
+\end{align*}
+\subsection{Coefficient of Determination}
+\begin{align*}
+    R^{2} = \frac{b_{1}S_{xy}}{S_{yy}}
+\end{align*}
 \end{document}

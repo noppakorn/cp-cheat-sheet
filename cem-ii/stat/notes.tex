@@ -12,7 +12,59 @@
 \pagenumbering{gobble}
 \begin{document}
 \begin{multicols}{2}
+    \section*{Probability}
+    \begin{flalign*}
+        P(A|B) & = \dfrac{P(A \cap B)}{P(B)} &  &
+    \end{flalign*}
+    If A and B are independent $P(A \cap B) = P(A)P(B)$
+    \begin{flalign*}
+        P(A|B) & = \dfrac{P(B|A)P(A)}{P(B)} &  &
+    \end{flalign*}
+    \subsection*{Expected Value}
+    \begin{flalign*}
+        E[x]    & = \int\limits_{-\infty}^{\infty} xp(x)\,dx    &  & \\
+        E[g(x)] & = \int\limits_{-\infty}^{\infty} g(x)p(x)\,dx
+    \end{flalign*}
+    \subsection*{Variance}
+    \begin{flalign*}
+         & Var[x]        = E[(x-E[x])^2] = \sigma^2 = \int\limits_{-\infty}^{\infty} (x-E[x])^2 p(x)\,dx &  & \\
+         & E((x-E[x])^2) = E[x^2] - (E[x])^2                                                             &  &
+    \end{flalign*}
+    \subsection*{Covariance}
+    \begin{flalign*}
+        cov(X_1, X_2) & = E[(X_1-m_1)(X_2-m_2)]  &  & \\
+                      & = E[(X_1)(X_2)] - m_1m_2 &  &
+    \end{flalign*}
+    \subsection*{Correlation}
+    \begin{flalign*}
+        \rho & = \dfrac{cov(X_1, X_2)}{\sqrt{V(X_1)V(X_2)}} &  &
+    \end{flalign*}
+
     \section*{Probability Distribution}
+    \subsection*{Bernoulli}
+    \begin{flalign*}
+        f(x) & = \begin{cases}
+                     q = 1-p & \text{ if } k = 0 \\
+                     p       & \text{ if } k = 1
+                 \end{cases} \quad E[x] = p \quad Var[X] = p(1-p) &  &
+    \end{flalign*}
+    \subsection*{Binomial}
+    \begin{flalign*}
+        f(x) & = \binom{n}{k} p^k (1-p)^{n-k} \qquad E[x]  = np \qquad Var[X] = np(1-p) &  &
+    \end{flalign*}
+    \subsection*{Poisson}
+    \begin{flalign*}
+        f(x) & = \dfrac{\lambda^k e^{-\lambda}}{k!} \qquad E[x] = \lambda \qquad Var[X] =\lambda &  &
+    \end{flalign*}
+    \subsection*{Poisson}
+    \begin{flalign*}
+        f(x) & = \dfrac{\lambda^k e^{-\lambda}}{k!} \qquad E[x] = \lambda \qquad Var[X] =\lambda &  &
+    \end{flalign*}
+    \subsection*{Pareto}
+    \begin{flalign*}
+        f(x) & = \dfrac{\alpha x_{m}^{a}}{x^{\alpha + 1}} \qquad E[x] = \qquad Var[X] = &  &
+    \end{flalign*}
+
 
 \end{multicols}
 \end{document}

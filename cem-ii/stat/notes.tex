@@ -6,6 +6,7 @@
 \usepackage[]{setspace}
 \usepackage[]{amssymb}
 \usepackage[]{multicol}
+\usepackage[]{multirow}
 \geometry{margin=1cm}
 \graphicspath{ {./images/} }
 \date{}
@@ -14,16 +15,14 @@
 \begin{multicols}{2}
     \section*{Probability}
     \begin{flalign*}
-        P(A|B) & = \dfrac{P(A \cap B)}{P(B)} &  &
+         & P(A|B) = \dfrac{P(A \cap B)}{P(B)} \qquad P(A|B) = \dfrac{P(B|A)P(A)}{P(B)} &  & \\
+         & \text{If A and B are independent} P(A \cap B) = P(A)P(B)                    &  &
     \end{flalign*}
-    If A and B are independent $P(A \cap B) = P(A)P(B)$
     \begin{flalign*}
-        P(A|B) & = \dfrac{P(B|A)P(A)}{P(B)} &  &
     \end{flalign*}
     \subsection*{Expected Value}
     \begin{flalign*}
-        E[x]    & = \int\limits_{-\infty}^{\infty} xp(x)\,dx    &  & \\
-        E[g(x)] & = \int\limits_{-\infty}^{\infty} g(x)p(x)\,dx
+        E[x] = \int\limits_{-\infty}^{\infty} xp(x)\,dx \qquad E[g(x)] = \int\limits_{-\infty}^{\infty} g(x)p(x)\,dx &  &
     \end{flalign*}
     \subsection*{Variance}
     \begin{flalign*}
@@ -85,10 +84,47 @@
                                                                                    \end{cases} &  &
     \end{flalign*}
     \section*{MLE}
+    To find the MLE given data
+    \begin{enumerate}
+        \item The likelihood function $P(data|\lambda)$, $lambda$ is the parameter
+        \item $\dfrac{d}{d\lambda}(\text{log likelihood}) = 0$, Find $\lambda$
+    \end{enumerate}
     \section*{Hypothesis Testing}
+    \subsection*{Errors}
+    \begin{tabular}{c c|c|c|}
+                                      &              & \multicolumn{2}{c}{True State of Nature}                    \\
+                                      &              & $H_0$                                    & $H_A$            \\ \cline{2-4}
+        \multirow{2}{*}{Our Decision} & Reject $H_0$ & Type-I Error                             & correct decision \\ \cline{2-4}
+                                      & Reject $H_0$ & correct decision                         & Type-II Error    \\ \cline{2-4}
+    \end{tabular}
+
     \subsection*{z-test}
+    Use when the \textbf{Variance} ($\sigma^2$) of the data is known
+    \begin{flalign*}
+        z =\dfrac{\bar{x} - \mu}{\sigma/\sqrt{n}} &  &
+    \end{flalign*}
     \subsection*{t-test}
-    
+    \begin{flalign*}
+         & t =\dfrac{\bar{x} - \mu}{s/\sqrt{n}} \quad \text{where } s^2 = \dfrac{1}{n-1}\sum\limits_{i = 1}^{n} (x_i - \bar{x})^2 \qquad df = n-1 &  &
+    \end{flalign*}
+    \section*{A/B Testing}
+
+    \subsection*{MDE}
+    \subsubsection*{Sample Size}
+    $m$ is the split rate (50:50 = 1, 80:20 = 4)
+    \begin{flalign*}
+        n = \dfrac{m+1}{m} \left(\dfrac{(Z_{\alpha} + Z_{\beta})\sigma}{MDE}\right)^2 &  &
+    \end{flalign*}
+
+    \subsection*{When not to do an A/B test}
+    \begin{itemize}
+        \item Things that cannot abe summarized into one or a few metrics
+        \item Totally new things
+        \item Delayed results
+        \item One-off events
+        \item Cannot split group independently
+    \end{itemize}
+
 
 
 \end{multicols}

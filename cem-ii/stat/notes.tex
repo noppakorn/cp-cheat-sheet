@@ -7,6 +7,8 @@
 \usepackage[]{amssymb}
 \usepackage[]{multicol}
 \usepackage[]{multirow}
+\usepackage[]{tikz}
+\usetikzlibrary{trees}
 \geometry{margin=1cm}
 \graphicspath{ {./images/} }
 \date{}
@@ -34,10 +36,14 @@
     \end{flalign*}
     \subsection*{Correlation}
     \begin{flalign*}
-        \rho & = \dfrac{cov(X_1, X_2)}{\sqrt{V(X_1)V(X_2)}} &  &
+         & \rho   = \dfrac{cov(X_1, X_2)}{\sqrt{V(X_1)V(X_2)}}                                                                                                                 &  & \\
+         & r_{xy} = \dfrac{\sum\limits_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum\limits_{i=1}^{n} (x_i - \bar{x})^2}\sqrt{\sum\limits_{i=1}^{n} (y_i - \bar{y})^2}} &  &
     \end{flalign*}
 
+    \section*{Algebra of Random Variable}
+
     \section*{Probability Distribution}
+    \subsection*{Cumulative Distribution Function (CDF)}
     \subsection*{Normal}
     \begin{flalign*}
         \dfrac{1}{\sigma \sqrt{2\pi}} e^{-\tfrac{1}{2} \left(\tfrac{x-\mu}{\sigma}\right)^2} \qquad E[X] = \mu \qquad Var[X] = \sigma^2 &  &
@@ -95,24 +101,35 @@
         \multirow{2}{*}{Our Decision} & Reject $H_0$ & Type-I Error                             & correct decision \\ \cline{2-4}
                                       & Reject $H_0$ & correct decision                         & Type-II Error    \\ \cline{2-4}
     \end{tabular}
-
     \subsection*{One Sample z-test}
     Use when the \textbf{Variance} ($\sigma^2$) of the data is known
     \begin{flalign*}
         z =\dfrac{\bar{x} - \mu}{\sigma/\sqrt{n}} &  &
     \end{flalign*}
-    \subsection*{Two Sample z-test}
-    \begin{flalign*}
-    \end{flalign*}
-
     \subsection*{One Sample t-test}
     \begin{flalign*}
          & t =\dfrac{\bar{x} - \mu}{s/\sqrt{n}} \quad \text{where } s^2 = \dfrac{1}{n-1}\sum\limits_{i = 1}^{n} (x_i - \bar{x})^2 \qquad df = n-1 &  &
     \end{flalign*}
+    \subsection*{Two Sample z-test}
+    \begin{flalign*}
+        z = \dfrac{(\bar{x_1} - \bar{x_2}) - (\mu_1 - \mu_2) }{\sqrt{\dfrac{\sigma_1^2}{n_1} + \dfrac{\sigma_2^2}{n_2}}} &  &
+    \end{flalign*}
+
     \subsection*{Two Sample t-test with Equal Variance}
     Assume that the data have $\sigma_1 = \sigma_2$
+    \begin{flalign*}
+         & t = \dfrac{\bar{x} - \bar{y}}{s_p} \qquad s_p^2 = \dfrac{(n-1)s_x^2 + (m-1)s_y^2}{n+m-2}\left(\dfrac{1}{n} + \dfrac{1}{m}\right) &  &
+    \end{flalign*}
     \subsection*{Two Sample t-test with Unequal Variance}
     Assume that the data have $\sigma_1 \neq \sigma_2$
+    \begin{flalign*}
+         & t = \dfrac{\bar{x} - \bar{y} - \mu_0}{s_P} \qquad s_P^2 = \dfrac{s_x^2}{n} + \dfrac{s_y^2}{n} &  & \\
+         & df = \dfrac{(s_x^2/n + s_y^2/m)^2}{(s_x^2/n)^2/(n-1) + (s_y^2/m)^2/(m-1)}                     &  &
+    \end{flalign*}
+    \subsection*{Paired two-sample t-test}
+    \begin{flalign*}
+         & t = \dfrac{\bar{w} - \mu_0}{s/\sqrt{n}} \quad w_i = x_i-y_i \qquad s^2 = \dfrac{1}{n-1}\sum\limits_{i=1}^{n}(w_i-\bar{w})^2 &  &
+    \end{flalign*}
     \section*{A/B Testing}
 
     \subsection*{MDE}

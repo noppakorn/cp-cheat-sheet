@@ -22,12 +22,15 @@
     \end{flalign*}
     \subsection*{Expected Value}
     \begin{flalign*}
-        E[x] = \int\limits_{-\infty}^{\infty} xp(x)\,dx \qquad E[g(x)] = \int\limits_{-\infty}^{\infty} g(x)p(x)\,dx &  &
+         & E[x] = \int\limits_{-\infty}^{\infty} xp(x)\,dx \qquad E[g(x)] = \int\limits_{-\infty}^{\infty} g(x)p(x)\,dx &  & \\
+         & E[a] = a; a \text{ is a constant} \qquad E[aX + b] = aE[x] + b                                               &  & \\
+         & E[X + Y] = E[X] + E[y]                                                                                       &  &
     \end{flalign*}
     \subsection*{Variance}
     \begin{flalign*}
          & Var[x]        = E[(x-E[x])^2] = \sigma^2 = \int\limits_{-\infty}^{\infty} (x-E[x])^2 p(x)\,dx &  & \\
-         & E((x-E[x])^2) = E[x^2] - (E[x])^2                                                             &  &
+         & E((x-E[x])^2) = E[x^2] - (E[x])^2                                                             &  & \\
+         & Var[a] = 0; a \text{ is a constant}  \qquad Var[aX +b] = a^2Var[X]                            &  &
     \end{flalign*}
     \subsection*{Covariance}
     \begin{flalign*}
@@ -41,6 +44,10 @@
     \end{flalign*}
 
     \section*{Algebra of Random Variable}
+    \begin{flalign*}
+         & Z = Y + X                  &  & \\
+         & P_Z(Z_0) = P_Y(y) * P_X(x) &  &
+    \end{flalign*}
 
     \section*{Probability Distribution}
     \subsection*{Cumulative Distribution Function (CDF)}
@@ -62,6 +69,7 @@
     \end{flalign*}
 
     \subsection*{Bernoulli}
+    Success ($p$), Fail ($1-p$)
     \begin{flalign*}
         \begin{cases}
             q = 1-p & \text{ if } k = 0 \\
@@ -69,6 +77,7 @@
         \end{cases} \quad E[X] = p \quad Var[X] = p(1-p) &  &
     \end{flalign*}
     \subsection*{Binomial}
+    $n$ Bernoulli trials
     \begin{flalign*}
         \binom{n}{k} p^k (1-p)^{n-k} \qquad E[X]  = np \qquad Var[X] = np(1-p) &  &
     \end{flalign*}
@@ -93,7 +102,13 @@
         \item The likelihood function $P(data|\lambda)$, $\lambda$ is the parameter
         \item $\dfrac{d}{d\lambda}(\text{log likelihood}) = 0$, Find $\lambda$
     \end{enumerate}
-    \section*{Hypothesis Testing}
+    \section*{LLN \& CLT}
+    LLN: As n grows,the probability that $X_n$ is close to $\mu$ \rightarrow 1.\\
+    CLT: As n grows,the distribution of $X_n$ converges to the normal distribution $N ~ (\mu, \sigma^2/n)$.
+    \section*{Confidence Interval (Polling)}
+    95\% Confidence Interval $\bar{x} \pm \dfrac{1}{\sqrt{n}}$
+
+    \section*{Null Hypothesis Significance Testing}
     \subsection*{Errors}
     \begin{tabular}{c c|c|c|}
                                       &              & \multicolumn{2}{c}{True State of Nature}                    \\
@@ -101,6 +116,30 @@
         \multirow{2}{*}{Our Decision} & Reject $H_0$ & Type-I Error                             & correct decision \\ \cline{2-4}
                                       & Reject $H_0$ & correct decision                         & Type-II Error    \\ \cline{2-4}
     \end{tabular}
+    \subsection*{P-value}
+    We usually do testing by specifying significance level and do testing using p-values.
+    \textbf{If p-value is less than the significance level we reject $H_0$}\\
+    P-value - Probability assuming Null of seeing data at least as extreme as the experiment data.
+    \subsubsection*{Problems with P-value}
+    \begin{itemize}
+        \item \textbf{P-hacking} Do experiment multiple times until the results is what we want
+        \item \textbf{Base rate fallacy} Low base rate \rightarrow More chance for false positive
+        \item \textbf{Low power experiments} If the test has low power (underpowered study), no significant is likely to be due to not enough samples t
+              detect small differences.
+    \end{itemize}
+    \subsection*{Significance level and power}
+    \begin{flalign*}
+        \text{Significance level} & = P(reject H_0|H_0)                             &  & \\
+                                  & = \text{probability we incorrectly reject } H_0 &  & \\
+                                  & = P(\text{type I error})                        &  &
+    \end{flalign*}
+    \begin{flalign*}
+        \text{Power} & = \text{probability we correctly reject } H_0 &  & \\
+                     & = P(reject H_0|H_A)                           &  & \\
+                     & = 1- P(\text{type II error})                  &  &
+    \end{flalign*}
+
+
     \subsection*{One Sample z-test}
     Use when the \textbf{Variance} ($\sigma^2$) of the data is known
     \begin{flalign*}
@@ -130,8 +169,59 @@
     \begin{flalign*}
          & t = \dfrac{\bar{w} - \mu_0}{s/\sqrt{n}} \quad w_i = x_i-y_i \qquad s^2 = \dfrac{1}{n-1}\sum\limits_{i=1}^{n}(w_i-\bar{w})^2 &  &
     \end{flalign*}
-    \section*{A/B Testing}
+    \subsection*{One-way ANOVA (F-tesst for equal means)}
+    Test if the population means from n group are all the same
+    Data for each group is an independent normal sample drawn from distributions
+    with (possibly) different means but the same variance.
+    \begin{flalign*}
+         & w      = \dfrac{MS_B}{MS_w} \qquad \bar{x}_i = \text{ mean of group i} \qquad  \bar{x} = \text{ mean of all data} &  & \\
+         & s_i^2  = \dfrac{1}{m-1} \sum\limits_{j=1}{m} (x_{i,j} - \bar{x}_i)^2                                              &  & \\
+    \end{flalign*}
+    \begin{flalign*}
+        MS_B & = \text{ between group variance}                               &  & \\
+             & = m \times \text{sample variance of group means}               &  & \\
+             & = \dfrac{m}{n-1} \sum\limits_{i=1}^{n} (\bar{x}_i - \bar{x})^2 &  & \\
+        MS_w & = \text{ average within group variance}                        &  & \\
+             & = m \times \text{sample means $s_1^2$, $\ldots$, $s_n^2$}      &  & \\
+             & = \dfrac{s_1^2+s_2^2+ \ldots +s_n^2}{n}                        &  &
+    \end{flalign*}
 
+    \section*{A/B Testing}
+    \subsection*{Steps}
+    \begin{enumerate}
+        \item Define relevant metrics
+        \item Split samples into comparable groups
+        \item Choose statistical tests and validate their assumptions
+        \item Decide on stopping criteria
+        \item Run and monitor the experiment
+        \item Analyze results and suggest actions
+    \end{enumerate}
+    \subsection*{Possible event probabilities}
+    \begin{enumerate}
+        \item \# checkout events / \# hits - double-count on page refreshes
+        \item \# checkout events/ \# sessions - double-count on inactive visits; good to see which products get bought within fewer visits
+        \item \# checkout events / \# cookies on product page - "users" as denominator; includes both logins and non-logins; different browsers/devices double-counts
+        \item \# payment events / \# cookies on product page - captures successful purchases
+        \item \# payment events / \# user ids - non-logins count as one user id
+        \item \# payment events / \# people - who are people?
+    \end{enumerate}
+    \subsection*{Attribution Period}
+    \subsubsection*{Conversion rate of August}
+    conversions within August / number of users that visited in August
+    \subsubsection*{Conversion rate of August cohort}
+    conversions within X days / number of users that visited in August
+    \subsection*{What Frequentist Hypothesis Tests Are NOT Saying}
+    \begin{enumerate}
+        \item The p-value is not the probability that the null hypothesis is true,
+              or the probability that the alternative hypothesis is false.
+        \item The p-value is not the probability that the observed effects were
+              produced by random chance alone.
+        \item The 0.05 significance level is merely a convention.
+        \item The p-value does not indicate the size or importance of the
+              observed effect.
+        \item The p-value is not the observed false positive rate; that depends
+              on the prevalence of the data.
+    \end{enumerate}
     \subsection*{MDE}
     \subsubsection*{Sample Size}
     $m$ is the split rate (50:50 = 1, 80:20 = 4)
@@ -151,4 +241,54 @@
 
 
 \end{multicols}
+\pagebreak
+\begin{center}
+    \section*{Z-score table (Area to the left of the z score)}
+    \includegraphics*[scale=0.5]{z-score-graph.png}
+
+    \begin{tabular}{l|llllllllll}
+        Z    & .00    & .01    & .02    & .03    & .04    & .05    & .06    & .07    & .08    & .09    \\
+        \hline
+        -3.9 & .00005 & .00005 & .00004 & .00004 & .00004 & .00004 & .00004 & .00004 & .00003 & .00003 \\
+        -3.8 & .00007 & .00007 & .00007 & .00006 & .00006 & .00006 & .00006 & .00005 & .00005 & .00005 \\
+        -3.7 & .00011 & .00010 & .00010 & .00010 & .00009 & .00009 & .00008 & .00008 & .00008 & .00008 \\
+        -3.6 & .00016 & .00015 & .00015 & .00014 & .00014 & .00013 & .00013 & .00012 & .00012 & .00011 \\
+        -3.5 & .00023 & .00022 & .00022 & .00021 & .00020 & .00019 & .00019 & .00018 & .00017 & .00017 \\
+        -3.4 & .00034 & .00032 & .00031 & .00030 & .00029 & .00028 & .00027 & .00026 & .00025 & .00024 \\
+        -3.3 & .00048 & .00047 & .00045 & .00043 & .00042 & .00040 & .00039 & .00038 & .00036 & .00035 \\
+        -3.2 & .00069 & .00066 & .00064 & .00062 & .00060 & .00058 & .00056 & .00054 & .00052 & .00050 \\
+        -3.1 & .00097 & .00094 & .00090 & .00087 & .00084 & .00082 & .00079 & .00076 & .00074 & .00071 \\
+        -3.0 & .00135 & .00131 & .00126 & .00122 & .00118 & .00114 & .00111 & .00107 & .00104 & .00100 \\
+        -2.9 & .00187 & .00181 & .00175 & .00169 & .00164 & .00159 & .00154 & .00149 & .00144 & .00139 \\
+        -2.8 & .00256 & .00248 & .00240 & .00233 & .00226 & .00219 & .00212 & .00205 & .00199 & .00193 \\
+        -2.7 & .00347 & .00336 & .00326 & .00317 & .00307 & .00298 & .00289 & .00280 & .00272 & .00264 \\
+        -2.6 & .00466 & .00453 & .00440 & .00427 & .00415 & .00402 & .00391 & .00379 & .00368 & .00357 \\
+        -2.5 & .00621 & .00604 & .00587 & .00570 & .00554 & .00539 & .00523 & .00508 & .00494 & .00480 \\
+        -2.4 & .00820 & .00798 & .00776 & .00755 & .00734 & .00714 & .00695 & .00676 & .00657 & .00639 \\
+        -2.3 & .01072 & .01044 & .01017 & .00990 & .00964 & .00939 & .00914 & .00889 & .00866 & .00842 \\
+        -2.2 & .01390 & .01355 & .01321 & .01287 & .01255 & .01222 & .01191 & .01160 & .01130 & .01101 \\
+        -2.1 & .01786 & .01743 & .01700 & .01659 & .01618 & .01578 & .01539 & .01500 & .01463 & .01426 \\
+        -2.0 & .02275 & .02222 & .02169 & .02118 & .02068 & .02018 & .01970 & .01923 & .01876 & .01831 \\
+        -1.9 & .02872 & .02807 & .02743 & .02680 & .02619 & .02559 & .02500 & .02442 & .02385 & .02330 \\
+        -1.8 & .03593 & .03515 & .03438 & .03362 & .03288 & .03216 & .03144 & .03074 & .03005 & .02938 \\
+        -1.7 & .04457 & .04363 & .04272 & .04182 & .04093 & .04006 & .03920 & .03836 & .03754 & .03673 \\
+        -1.6 & .05480 & .05370 & .05262 & .05155 & .05050 & .04947 & .04846 & .04746 & .04648 & .04551 \\
+        -1.5 & .06681 & .06552 & .06426 & .06301 & .06178 & .06057 & .05938 & .05821 & .05705 & .05592 \\
+        -1.4 & .08076 & .07927 & .07780 & .07636 & .07493 & .07353 & .07215 & .07078 & .06944 & .06811 \\
+        -1.3 & .09680 & .09510 & .09342 & .09176 & .09012 & .08851 & .08691 & .08534 & .08379 & .08226 \\
+        -1.2 & .11507 & .11314 & .11123 & .10935 & .10749 & .10565 & .10383 & .10204 & .10027 & .09853 \\
+        -1.1 & .13567 & .13350 & .13136 & .12924 & .12714 & .12507 & .12302 & .12100 & .11900 & .11702 \\
+        -1.0 & .15866 & .15625 & .15386 & .15151 & .14917 & .14686 & .14457 & .14231 & .14007 & .13786 \\
+        -0.9 & .18406 & .18141 & .17879 & .17619 & .17361 & .17106 & .16853 & .16602 & .16354 & .16109 \\
+        -0.8 & .21186 & .20897 & .20611 & .20327 & .20045 & .19766 & .19489 & .19215 & .18943 & .18673 \\
+        -0.7 & .24196 & .23885 & .23576 & .23270 & .22965 & .22663 & .22363 & .22065 & .21770 & .21476 \\
+        -0.6 & .27425 & .27093 & .26763 & .26435 & .26109 & .25785 & .25463 & .25143 & .24825 & .24510 \\
+        -0.5 & .30854 & .30503 & .30153 & .29806 & .29460 & .29116 & .28774 & .28434 & .28096 & .27760 \\
+        -0.4 & .34458 & .34090 & .33724 & .33360 & .32997 & .32636 & .32276 & .31918 & .31561 & .31207 \\
+        -0.3 & .38209 & .37828 & .37448 & .37070 & .36693 & .36317 & .35942 & .35569 & .35197 & .34827 \\
+        -0.2 & .42074 & .41683 & .41294 & .40905 & .40517 & .40129 & .39743 & .39358 & .38974 & .38591 \\
+        -0.1 & .46017 & .45620 & .45224 & .44828 & .44433 & .44038 & .43644 & .43251 & .42858 & .42465 \\
+        -0.0 & .50000 & .49601 & .49202 & .48803 & .48405 & .48006 & .47608 & .47210 & .46812 & .46414
+    \end{tabular}
+\end{center}
 \end{document}
